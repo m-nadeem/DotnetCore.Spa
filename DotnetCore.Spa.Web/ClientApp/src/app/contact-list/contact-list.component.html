@@ -1,0 +1,31 @@
+<h1>Contacts List</h1>
+
+<p *ngIf="!contactsList"><em>Loading...</em></p>
+
+<table class='table table-striped' *ngIf="contactsList">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Gender</th>
+      <th>Phone</th>
+      <th>Workplace</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let singleContact of contactsList">
+      <td>{{ singleContact.id }}</td>
+      <td [routerLinkActive]='["link-active"]'>
+        <a [routerLink]="['/contact-details', singleContact.id]">
+          {{ singleContact.firstName }}&nbsp;{{singleContact.lastName}}
+        </a>
+      </td>
+
+      <td>{{ singleContact.email }}</td>
+      <td>{{ singleContact.gender }}</td>
+      <td>{{ singleContact.phone }}</td>
+      <td>{{ singleContact.workplace }}</td>
+    </tr>
+  </tbody>
+</table>
